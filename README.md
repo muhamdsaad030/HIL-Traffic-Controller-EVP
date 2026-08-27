@@ -42,4 +42,4 @@ HIL Traffic Signal Controller online.
   ```
   ---
   ## Media & Verification
-  * **Demo Video:** [Watch Full System & Interlock Demo](https://drive.google.com/file/d/12j0f9mfA_pifQzWWQEPIqF2v0Z6EdmNC/view?usp=drivesdk)
+  * **Demo Video:** [Watch Full System & Interlock Demo](https://drive.google.com/file/d/15BhMp_JoopJyY_lupTLX_ianT7n03PK-/view?usp=drivesdk)
