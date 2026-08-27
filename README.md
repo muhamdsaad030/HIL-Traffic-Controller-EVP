@@ -9,13 +9,13 @@ Scaled 2-way Hardware-in-the-Loop (HIL) traffic controller model built on Arduin
 
 * **Active-LOW Relay Logic:** 4-channel active-LOW relay control with defined startup states to establish a safe default traffic configuration during system initialization.
 
-* **Priority-Based Input Polling:** Side-street vehicle and emergency preemption inputs are monitored through digital polling. During an active side-street cycle, the EVP input is repeatedly checked to maintain rapid response to emergency requests.
+* **Priority-Based Input Polling:** Emergency Vehicle Preemption is checked before standard vehicle requests. During an active side-street phase, the EVP input is sampled every 100 ms to maintain rapid response to emergency requests.
 
-* **Emergency Vehicle Preemption (EVP):** High-priority override logic detects an emergency vehicle request and restores Main Street GREEN, overriding an active Side Street phase.
+* **Emergency Vehicle Preemption (EVP):** High-priority override logic restores the default Main Street GREEN and Side Street RED configuration whenever the EVP input is detected.
 
-* **Traffic State Control:** Vehicle detection triggers a temporary Side Street GREEN phase before the controller returns to the default Main Street GREEN state.
+* **Traffic State Control:** A side-street vehicle request temporarily changes the intersection to Main Street RED and Side Street GREEN for approximately 4 seconds before automatically returning to the default state.
 
-* **UART Telemetry:** Real-time diagnostic messages report system initialization, vehicle detection, traffic signal state changes, and EVP activation through serial communication.
+* **UART Telemetry:** Real-time diagnostic messages report system initialization, vehicle detection, traffic signal state changes, and EVP activation over a 115200 Baud serial interface.
 
 ---
 
@@ -35,12 +35,16 @@ Scaled 2-way Hardware-in-the-Loop (HIL) traffic controller model built on Arduin
 ## Diagnostic Output Sample
 
 ```text
---- SYSTEM INITIALIZED ---
-STATE: Main Street GREEN | Side Street RED
-DETECTOR: Vehicle detected on Side Street...
-STATE: Side Street GREEN
-EVP: Emergency Vehicle Detected! Overriding...
-STATE: Main Street GREEN (Emergency Priority Restored)
+================ SYSTEM INITIALIZATION ================
+HIL Traffic Signal Controller online.
+[STATE UPDATE] Main Street: GREEN | Side Street: RED
+[INPUT] Vehicle detected on Side Street (Pin 7)
+[STATE UPDATE] Main Street: RED | Side Street: GREEN
+-------------------------------------------------------
+[INTERRUPT] Emergency Vehicle Preemption (EVP) Detected!
+[ACTION] Executing instant state priority restoration...
+-------------------------------------------------------
+[STATE UPDATE] Main Street: GREEN | Side Street: RED
   ```
   ---
   ## Media & Verification
