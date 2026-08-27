@@ -39,3 +39,7 @@ HIL Traffic Signal Controller online.
 [ACTION] Executing instant state priority restoration...
 -------------------------------------------------------
 [STATE UPDATE] Main Street: GREEN | Side Street: RED
+  ```
+  ---
+  ## Media & Verification
+  * **Demo Video:** [Watch Full System & Interlock Demo](https://drive.google.com/file/d/12j0f9mfA_pifQzWWQEPIqF2v0Z6EdmNC/view?usp=drivesdk)
